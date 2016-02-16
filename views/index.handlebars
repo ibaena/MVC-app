@@ -1,55 +1,40 @@
 <div class="container">
 	<div class="row" id="list">
-		<div class="col s6 l4" id="left-side">
-			<table class="striped bordered highlight responsive-table">
-				<thead>
-					<tr>
-						<th data-field="id">Burger Yet to Eat</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each burger_data}}
-						{{#if this.devoured}}
-							<tr>
-								<td><pre>{{this.ID}}. {{this.name}}</pre>
-								</td>
-								<td>
-									<form method="POST" action="/update?_method=PUT">
-										<input type="hidden" type="text" name="id" value={{this.ID}}>
-										<button type="submit" class="btn-floating waves-effect waves-light black"><i class="material-icons">done</i></button>
-									</form>
-								</td>
-							</tr>
-						{{/if}}
-					{{/each}}
-				</tbody>
-			</table>
+		<div class="col s12 l4" id="left-side">
+			<h3 class="title center align">Burgers</h3>
+			<div class="divider headDivider">	</div>
+			<div class="list">
+			{{#each burger_data}}
+				{{#if this.devoured}}
+					<span class="white-text"><pre>{{this.ID}}. {{this.name}}</pre></span>
+					<form method="POST" action="/update?_method=PUT">
+						<input type="hidden" type="text" name="id" value= {{this.ID}}>
+						<button type="submit" class="btn-floating waves-effect waves-light #d50000 red accent-4"><i class="material-icons">done</i></button>
+					</form>
+					<div class="divider"></div>
+				{{/if}}
+			{{/each}}
+			</div>
 		</div>
-		<div class="col l4 center align">
-				<img src="/images/burger.gif" alt="burger logo" class="brand" />
+		<div class="col s12 l4 center align" id="user-input">
 			<h1>Eat Da Burger!</h1>
+			<img src="/images/burger.gif" alt="burger logo" class="brand" />
 			<form action="/create" method="POST" id="add">
 				<textarea class="materialize-textarea" type="text" name="name" value="" id="enter_text" placeholder="Add a Burger..."></textarea>
-				<button type="submit" class="btn-floating waves-effect waves-light blue pull right" id="text-enter-button">Add</button>
+				<button type="submit" class="btn-floating waves-effect waves-light blue pull right" id="text-enter-button"><i class="material-icons">library_add</i></button>
 			</form>
 		</div>
-		<div class="col s6 l4" id="right-side">
-			<table class="striped bordered highlight responsive-table">
-				<thead>
-					<tr>
-						<th data-field="id">I Ate Burger</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each burger_data}}
-						{{#if this.devoured}}
-						{{else}}
-							<tr>
-								<td><pre>{{this.ID}}. {{this.name}}</pre></td>
-							</tr>
-						{{/if}}
-					{{/each}}
-				</tbody>
-			</table>
+		<div class="col s12 l4" id="right-side">
+			<h3 class="title center align">Burgers Eaten</h3>
+			<div class="divider headDivider">	</div>
+			<div class="list">
+				{{#each burger_data}}
+					{{#if this.devoured}}
+					{{else}}
+					<span class="white-text"><pre>{{this.ID}}. {{this.name}}</pre></span>
+					<div class="divider"></div>
+				{{/if}}
+			{{/each}}
+			</div>
 		</div>
 	</div>
