@@ -1,12 +1,7 @@
 <div class="container">
-	<div class="row" id- "logo">
-		<div class="col s12 center align">
-			<h1>Eat Da Burger!</h1>
-		</div>
-	</div>
 	<div class="row" id="list">
-		<div class="col s4" id="left-side">
-			<table>
+		<div class="col s6 l4" id="left-side">
+			<table class="striped bordered highlight responsive-table">
 				<thead>
 					<tr>
 						<th data-field="id">Burger Yet to Eat</th>
@@ -17,9 +12,11 @@
 						{{#if this.devoured}}
 							<tr>
 								<td><pre>{{this.ID}}. {{this.name}}</pre>
+								</td>
+								<td>
 									<form method="POST" action="/update?_method=PUT">
 										<input type="hidden" type="text" name="id" value={{this.ID}}>
-										<button type="submit" class="btn btn-default">Yummy</button>
+										<button type="submit" class="btn-floating waves-effect waves-light black"><i class="material-icons">done</i></button>
 									</form>
 								</td>
 							</tr>
@@ -28,8 +25,16 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col s4 offset-s4" id="right-side">
-			<table>
+		<div class="col l4 center align">
+				<img src="/images/burger.gif" alt="burger logo" class="brand" />
+			<h1>Eat Da Burger!</h1>
+			<form action="/create" method="POST" id="add">
+				<textarea class="materialize-textarea" type="text" name="name" value="" id="enter_text" placeholder="Add a Burger..."></textarea>
+				<button type="submit" class="btn-floating waves-effect waves-light blue pull right" id="text-enter-button">Add</button>
+			</form>
+		</div>
+		<div class="col s6 l4" id="right-side">
+			<table class="striped bordered highlight responsive-table">
 				<thead>
 					<tr>
 						<th data-field="id">I Ate Burger</th>
@@ -41,7 +46,6 @@
 						{{else}}
 							<tr>
 								<td><pre>{{this.ID}}. {{this.name}}</pre></td>
-
 							</tr>
 						{{/if}}
 					{{/each}}
@@ -49,13 +53,3 @@
 			</table>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col s8 offset-s2">
-			<form action="/create" method="POST" style="width: 200px; padding: 6px;">
-				<textarea class="form-control" type="text" name="name" value="" id="enter_text"></textarea>
-				<button type="submit" class="btn blue" id="text-enter-button">Add Burger</button>
-				<p>Add A Burger</p>
-			</form>
-		</div>
-	</div>
-</div>
