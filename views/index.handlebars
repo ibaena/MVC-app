@@ -1,22 +1,23 @@
 <div class="container">
 	<div class="row" id="content">
-		<form method="POST" action="/update?_method=PUT" class="col s12 l4" id="left-side">
+		<div class="col s12 l4" id="left-side">
 			<h3 class="title center align">Burgers</h3>
 			<div class="divider headDivider">	</div>
 			<div class="list">
 			{{#each burger_data}}
 				{{#if this.devoured}}
-					<span class="white-text"><pre>{{this.ID}}. {{this.name}}</pre></span>
+					<form method="POST" action="/update?_method=PUT">
+					<span class="white-text"><pre>{{this.ID}}. {{this.name}}<button type="submit" class="pull right btn-floating waves-effect waves-light #d50000 red accent-4"><i class="material-icons">done</i></button></pre></span>
 						<input type="hidden" type="text" name="id" value= {{this.ID}}>
-						<button type="submit" class="btn-floating waves-effect waves-light #d50000 red accent-4"><i class="material-icons">done</i></button>
+					</form>
 					<div class="divider"></div>
 				{{/if}}
 			{{/each}}
 			</div>
-		</form>
+		</div>
 
 		<div class="col s12 l4 center align" id="user-input">
-			<h1 class="">Eat Da Burger!</h1>
+			<h1>Eat Da Burger!</h1>
 			<img src="/images/burger.gif" alt="burger logo" class="brand" />
 			<form action="/create" method="POST" id="add">
 				<textarea class="materialize-textarea" type="text" name="name" value="" id="enter_text" placeholder="Add a Burger..."></textarea>
