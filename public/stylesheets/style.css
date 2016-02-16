@@ -25,10 +25,13 @@ body {
 #user-input {
   background-color: #F6F6F6;
   border-radius: 10px;
+  margin-top: 23px;
 }
 
 .title {
   font-weight: 300;
+  background-color: #F6F6F6;
+  border-radius: 10px;
 }
 
 .headDivider {
