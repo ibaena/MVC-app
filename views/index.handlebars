@@ -1,35 +1,48 @@
 <div class="container">
-	<div class="row" id-"logo">
+	<div class="row" id- "logo">
 		<div class="col s12 center align">
 			<h1>Eat Da Burger!</h1>
 		</div>
 	</div>
 	<div class="row" id="list">
 		<div class="col s4" id="left-side">
-			{{#each burger_data}}
-			{{#if this.devoured}}
-			<div style="border-style: solid; width: 180px; margin-bottom: 15px; padding: 6px; background-color:Grey; color: white;">
-			<div>
-				<pre>{{this.ID}}. {{this.name}}</pre>
-			</div>
-			<div>
-				<form method="POST" action="/update?_method=PUT">
-					<input type="hidden" type="text" name="id" value={{this.ID}}>
-					<a type="submit" class="btn btn-waves black">Add Visit Count</a>
-				</form>
-			</div>
-			<div>
-				<form method="POST" action="/delete?_method=DELETE">
-					<input input type="hidden" type="text" name="id" value={{this.ID}}><br>
-					<a type="submit" class="btn btn-waves black">Remove Member</a>
-				</form>
-			</div>
-	  	</div>
-			{{/if}}
-		  {{/each}}
+			<table>
+				<thead>
+					<tr>
+						<th data-field="id">Burger Yet to Eat</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each burger_data}}
+						{{#if this.devoured}}
+							<tr>
+								<td><pre>{{this.ID}}. {{this.name}}</pre></td>
+							</tr>
+						{{/if}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="col s4 offset-s4" id="right-side">
+			<table>
+				<thead>
+					<tr>
+						<th data-field="id">I Ate Burger</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each burger_data}}
+						{{#if this.devoured}}
+						{{else}}
+							<tr>
+								<td><pre>{{this.ID}}. {{this.name}}</pre></td>
+							</tr>
+						{{/if}}
+					{{/each}}
+				</tbody>
+			</table>
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="col s8 offset-s2">
 			<form action="/create" method="POST" style="width: 200px; padding: 6px;">
