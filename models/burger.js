@@ -6,14 +6,14 @@ var burger = {
 			cb(res);
 		});
 	},
-	create: function(nameInput,cb) {
-		orm.insertOne(nameInput, cb);
+	create: function(name,cb) {
+		orm.create(name, cb);
 	},
-	update: function(inputId, cb){
-		orm.updateOne(inputId, cb);
+	updates: function(id, cb){
+		orm.update(id, cb);
 	},
-	delete: function(inputId, cb) {
-		orm.deleteOne(inputId, cb);
+	remove: function(id, cb) {
+		orm.delete(id, cb);
 	}
 };
 

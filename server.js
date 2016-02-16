@@ -23,8 +23,10 @@ app.set('view engine', 'handlebars');
 
 var routes = require('./controllers/burger_controller.js');
 app.use('/', routes);
+app.use('/create', routes);
+app.use('/update', routes);
+app.use('/delete', routes);
 
 
 var port = Number(process.env.PORT || 8000);
 app.listen(port);
-    
