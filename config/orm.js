@@ -5,8 +5,7 @@ var orm = {
     var s = 'SELECT * FROM burger;';
     connection.query(s, function(err, result) {
       if (err) throw err;
-      //cb(result);
-      console.log(result); //note for later result is an array containing the object [{ID:?, name:? ,devoured:?, date:?}]
+      cb(result);                    //note for later result is an array containing the object [{ID:?, name:? ,devoured:?, date:?}]
     });
   },
   create: function(nameInput, cb) { //note for later i will have a button linked to this to post to list
@@ -23,7 +22,7 @@ var orm = {
       cb(result);
     });
   },
-  delete: function(idInput, cb) { 
+  delete: function(idInput, cb) {
     var s = 'DELETE FROM burger WHERE ID = ?';
     connection.query(s, '1', function(err, result) {
       if (err) throw err;
