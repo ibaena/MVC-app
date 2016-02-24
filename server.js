@@ -28,5 +28,5 @@ app.use('/update', routes);
 app.use('/delete', routes);
 
 
-var envs = require('dotenv').config({silent: true});
 var PORT = process.env.PORT || 3000;
+console.log('PORT:' + process.env.PORT);
